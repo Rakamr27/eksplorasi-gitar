@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplorasi Jenis Gitar</title>
+    <meta name="description" content="Kenali gitar akustik, listrik, dan bass: cara kerja, kisaran harga, dan tingkat kesulitannya.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- ============================================================
+         BAGIAN 0: GARIS PROGRES SCROLL
+         Garis tipis di paling atas, terisi mengikuti posisi scroll.
+         ============================================================ -->
+    <div class="progress" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         BAGIAN 1: HEADER / NAVIGASI ATAS (menempel saat di-scroll)
+         Isi: logo brand | menu navigasi | tombol "Tanya kami" |
+              tombol hamburger (muncul di HP)
+         ============================================================ -->
+    <header class="site-header">
+        <div class="header-inner">
+            <!-- 1a. Logo / nama web -->
+            <a href="#beranda" class="brand">
+                <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c5 0 8.6 3 8.6 7.6 0 5.8-5.6 11.4-8.6 11.4s-8.6-5.6-8.6-11.4C3.4 5.5 7 2.5 12 2.5z" fill="currentColor"/></svg>
+                <span>Eksplorasi Gitar</span>
+            </a>
+
+            <!-- 1b. Menu navigasi utama -->
+            <nav class="main-nav" id="mainNav" aria-label="Navigasi utama">
+                <a href="#spotlight">Jenis gitar</a>
+                <a href="#bandingkan">Bandingkan</a>
+                <a href="#peta">Peta</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+
+            <!-- 1c. Tombol ajakan (CTA) di header -->
+            <a href="#kontak" class="header-cta">Tanya kami</a>
+
+            <!-- 1d. Tombol hamburger — hanya tampil di layar kecil -->
+            <button class="menu-btn" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         BAGIAN 2: HERO (layar pembuka paling atas)
+         Isi: foto latar + gelombang senar (canvas) | judul besar |
+              tombol aksi | chip pintasan ke tiap gitar
+         ============================================================ -->
+    <section class="hero" id="beranda">
+        <!-- 2a. Lapisan latar hero: foto + gelap transparan + canvas gelombang -->
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-tint" aria-hidden="true"></div>
+        <canvas class="waves" aria-hidden="true"></canvas>
+
+        <!-- 2b. Teks utama hero -->
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="line"><span>Tiga gitar,</span></span><span class="line"><span>tiga karakter suara.</span></span></h1>
+            <p class="hero-lead">
+                Dari kehangatan kayu, sengatan sinyal listrik, sampai denyut nada rendah yang menahan lagu tetap berdiri. Kenali cara kerja, kisaran harga, dan seberapa ramah masing-masing untuk mulai belajar.
+            </p>
+            <!-- 2c. Tombol aksi hero -->
+            <div class="hero-cta">
+                <a href="#spotlight" class="btn btn-primary">
+                    Mulai menjelajah
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#peta" class="btn btn-ghost">Lihat peta</a>
+            </div>
+        </div>
+
+        <!-- 2d. Chip pintasan: lompat langsung ke slide gitar tertentu -->
+        <div class="hero-quick">
+            <span class="quick-label">Langsung ke</span>
+            <a href="#akustik" data-slide="0" class="chip"><img src="asets/akustik.jpg" alt=""><span>Akustik</span></a>
+            <a href="#listrik" data-slide="1" class="chip"><img src="asets/listrik.jpg" alt=""><span>Listrik</span></a>
+            <a href="#bass" data-slide="2" class="chip"><img src="asets/bass.jpg" alt=""><span>Bass</span></a>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- ============================================================
+             BAGIAN 3: SPOTLIGHT (carousel geser 3 jenis gitar)
+             Isi: judul bagian + penghitung 01/03 + tombol panah |
+                  3 slide (foto + penjelasan tiap gitar)
+             ============================================================ -->
+        <section class="spotlight" id="spotlight">
+            <div class="container">
+                <!-- 3a. Kepala bagian: label, judul, tombol panah, penghitung -->
+                <div class="spot-head" data-stagger>
+                    <div class="spot-intro">
+                        <p class="pill">Spotlight</p>
+                        <h2 class="h2">Kenali ciri khas setiap gitar</h2>
+                        <p class="lede">Suara, harga, dan tingkat kesulitannya. Geser atau tekan panah untuk berpindah.</p>
+                    </div>
+                    <div class="spot-controls">
+                        <p class="counter" aria-live="polite">
+                            <span class="count"><span class="count-roll"><span>01</span><span>02</span><span>03</span></span></span>
+                            <span class="count-total">/ 03</span>
+                        </p>
+                        <div class="arrows">
+                            <button class="arrow" type="button" data-dir="-1" aria-label="Sebelumnya">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <button class="arrow" type="button" data-dir="1" aria-label="Berikutnya">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3b. Rel carousel berisi 3 slide -->
+                <div class="carousel" data-reveal>
+                    <div class="carousel-track" tabindex="0" aria-label="Daftar jenis gitar">
+
+                        <!-- 3b-1. Slide 1: Gitar Akustik -->
+                        <article class="slide" id="akustik">
+                            <div class="slide-media">
+                                <img src="asets/akustik.jpg" alt="Gitar akustik dimainkan di depan mikrofon studio">
+                            </div>
+                            <div class="slide-body">
+                                <p class="slide-kind">Akustik tradisional</p>
+                                <h3 class="slide-title">Mengenal Gitar Akustik</h3>
+                                <p class="slide-desc">
+                                    Gitar akustik mengandalkan resonansi alami dari bodi kayunya untuk menghasilkan suara yang hangat dan syahdu. Sangat cocok untuk permainan solo, iringan vokal, dan genre seperti Pop, Folk, serta Country tanpa perlu amplifikasi tambahan.
+                                </p>
+                                <dl class="facts">
+                                    <div class="fact"><dt>Kisaran harga</dt><dd>Rp 1.500.000 – Rp 15.000.000</dd></div>
+                                    <div class="fact"><dt>Tingkat kesulitan</dt><dd>Ramah untuk pemula</dd></div>
+                                </dl>
+                                <a href="https://theguitarmarketplace.com/the-history-of-the-acoustic-guitar/" target="_blank" rel="noopener" class="text-link">
+                                    Baca sumber penjelasan
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 3b-2. Slide 2: Gitar Listrik -->
+                        <article class="slide" id="listrik">
+                            <div class="slide-media">
+                                <img src="asets/listrik.jpg" alt="Gitar listrik dimainkan di atas panggung berkabut">
+                            </div>
+                            <div class="slide-body">
+                                <p class="slide-kind">Instrumen elektrik</p>
+                                <h3 class="slide-title">Mengenal Gitar Listrik</h3>
+                                <p class="slide-desc">
+                                    Gitar listrik menangkap getaran senar lewat <i>pickup</i> elektromagnetik, lalu mengubahnya menjadi sinyal suara melalui amplifier. Eksplorasi nadanya nyaris tanpa batas berkat efek pedal, menjadikannya nyawa utama genre Rock, Metal, dan Blues.
+                                </p>
+                                <dl class="facts">
+                                    <div class="fact"><dt>Kisaran harga</dt><dd>Rp 2.500.000 – Rp 35.000.000</dd></div>
+                                    <div class="fact"><dt>Tingkat kesulitan</dt><dd>Menengah ke profesional</dd></div>
+                                </dl>
+                                <a href="https://superlive.id/supermusic/artikel/news/gitar-listrik-sejarah-komponen-dan-kegunaannya" target="_blank" rel="noopener" class="text-link">
+                                    Baca sumber penjelasan
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- 3b-3. Slide 3: Bass Modern -->
+                        <article class="slide" id="bass">
+                            <div class="slide-media">
+                                <img src="asets/bass.jpg" alt="Gitar bass dimainkan dengan cahaya panggung ungu">
+                            </div>
+                            <div class="slide-body">
+                                <p class="slide-kind">Fondasi ritme</p>
+                                <h3 class="slide-title">Mengenal Bass Modern</h3>
+                                <p class="slide-desc">
+                                    Sebagai fondasi ritme dalam formasi band, gitar bass punya senar yang lebih tebal dan leher yang lebih panjang. Nada rendahnya mengikat melodi dan ketukan drum menjadi satu harmoni yang solid dan bertenaga di berbagai genre.
+                                </p>
+                                <dl class="facts">
+                                    <div class="fact"><dt>Kisaran harga</dt><dd>Rp 2.000.000 – Rp 25.000.000</dd></div>
+                                    <div class="fact"><dt>Tingkat kesulitan</dt><dd>Pemula hingga profesional</dd></div>
+                                </dl>
+                                <a href="https://www.superprof.co.id/blog/asal-usul-gitar-bass/" target="_blank" rel="noopener" class="text-link">
+                                    Baca sumber penjelasan
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             BAGIAN 4: BANDINGKAN SEKILAS (3 kartu ringkas)
+             Tiap kartu bisa diklik → membuka slide yang sesuai.
+             ============================================================ -->
+        <section class="compare" id="bandingkan">
+            <div class="container">
+                <!-- 4a. Kepala bagian -->
+                <div class="section-head" data-stagger>
+                    <p class="pill">Sekilas</p>
+                    <h2 class="h2">Bandingkan sekilas</h2>
+                    <p class="lede">Ringkasan harga dan tingkat kesulitan ketiganya. Pilih salah satu untuk membaca penjelasan lengkapnya.</p>
+                </div>
+
+                <!-- 4b. Barisan 3 kartu perbandingan -->
+                <div class="compare-grid" data-stagger>
+                    <!-- 4b-1. Kartu: Akustik -->
+                    <div class="cmp">
+                        <a href="#akustik" data-slide="0" class="cmp-card">
+                            <div class="cmp-media">
+                                <img src="asets/akustik.jpg" alt="">
+                                <span class="tag">Akustik tradisional</span>
+                            </div>
+                            <div class="cmp-body">
+                                <h3>Gitar Akustik</h3>
+                                <dl>
+                                    <div><dt>Harga</dt><dd>Rp 1,5 jt – 15 jt</dd></div>
+                                    <div><dt>Level</dt><dd>Ramah pemula</dd></div>
+                                </dl>
+                                <span class="cmp-more">Lihat penjelasan
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- 4b-2. Kartu: Listrik -->
+                    <div class="cmp">
+                        <a href="#listrik" data-slide="1" class="cmp-card">
+                            <div class="cmp-media">
+                                <img src="asets/listrik.jpg" alt="">
+                                <span class="tag">Instrumen elektrik</span>
+                            </div>
+                            <div class="cmp-body">
+                                <h3>Gitar Listrik</h3>
+                                <dl>
+                                    <div><dt>Harga</dt><dd>Rp 2,5 jt – 35 jt</dd></div>
+                                    <div><dt>Level</dt><dd>Menengah ke pro</dd></div>
+                                </dl>
+                                <span class="cmp-more">Lihat penjelasan
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- 4b-3. Kartu: Bass -->
+                    <div class="cmp">
+                        <a href="#bass" data-slide="2" class="cmp-card">
+                            <div class="cmp-media">
+                                <img src="asets/bass.jpg" alt="">
+                                <span class="tag">Fondasi ritme</span>
+                            </div>
+                            <div class="cmp-body">
+                                <h3>Bass Modern</h3>
+                                <dl>
+                                    <div><dt>Harga</dt><dd>Rp 2 jt – 25 jt</dd></div>
+                                    <div><dt>Level</dt><dd>Pemula hingga pro</dd></div>
+                                </dl>
+                                <span class="cmp-more">Lihat penjelasan
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             BAGIAN 5: PETA (Google Maps + label lokasi)
+             ============================================================ -->
+        <section class="map-section" id="peta">
+            <div class="container">
+                <!-- 5a. Kepala bagian -->
+                <div class="section-head center" data-stagger>
+                    <p class="pill">Lokasi</p>
+                    <h2 class="h2">Peta Jakarta</h2>
+                    <p class="lede">Lokasi di peta: Blok M Square, Jakarta Selatan.</p>
+                </div>
+                <!-- 5b. Bingkai peta + label lokasi mengambang -->
+                <div class="map-frame" data-reveal>
+                    <div class="map-chip">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg>
+                        Blok M Square, Jakarta Selatan
+                    </div>
+                    <iframe title="Peta Blok M Square, Jakarta Selatan" src="https://maps.google.com/maps?q=Blok+M+Square,+Jakarta+Selatan&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             BAGIAN 6: KONTAK (kartu form pesan)
+             Isi: sisi kiri info + gelombang hias | sisi kanan formulir
+             ============================================================ -->
+        <section class="contact" id="kontak">
+            <div class="container">
+                <div class="contact-card" data-reveal>
+                    <!-- 6a. Sisi kiri: judul + hiasan gelombang -->
+                    <div class="contact-side">
+                        <h2 class="h2">Punya pertanyaan?</h2>
+                        <p class="lede">Tulis nama dan pesanmu, nanti dibalas.</p>
+
+                        <svg class="contact-waves" viewBox="0 0 450 120" preserveAspectRatio="none" aria-hidden="true">
+                            <g transform="translate(0,20)"><path class="w w1" d="M0 60 C 37 20 75 20 112 60 S 187 100 225 60 S 300 20 337 60 S 412 100 450 60 S 525 20 562 60 S 637 100 675 60 S 750 20 787 60 S 862 100 900 60" fill="none" stroke="#c79a4b" stroke-width="1.2"/></g>
+                            <g transform="translate(0,34)"><path class="w w2" d="M0 60 C 37 20 75 20 112 60 S 187 100 225 60 S 300 20 337 60 S 412 100 450 60 S 525 20 562 60 S 637 100 675 60 S 750 20 787 60 S 862 100 900 60" fill="none" stroke="#c79a4b" stroke-width="1.2" opacity="0.6"/></g>
+                            <g transform="translate(0,48)"><path class="w w3" d="M0 60 C 37 20 75 20 112 60 S 187 100 225 60 S 300 20 337 60 S 412 100 450 60 S 525 20 562 60 S 637 100 675 60 S 750 20 787 60 S 862 100 900 60" fill="none" stroke="#c79a4b" stroke-width="1.2" opacity="0.35"/></g>
+                        </svg>
+                    </div>
+
+                    <!-- 6b. Sisi kanan: formulir pesan -->
+                    <form id="contactForm" novalidate>
+                        <label for="nama">Nama lengkap</label>
+                        <input type="text" id="nama" name="nama" autocomplete="name">
+
+                        <label for="pesan">Pesan atau pertanyaan</label>
+                        <textarea id="pesan" name="pesan" rows="4"></textarea>
+
+                        <button type="submit" class="btn btn-wine">
+                            <span class="btn-text">Kirim pesan</span>
+                            <svg class="btn-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.500l4.5 4.500L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <!-- 6c. Status pengiriman (diisi oleh script.js) -->
+                        <p id="formStatus" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+
+         Isi: identitas | kolom "Jelajahi" | kolom "Sumber referensi" |
+              baris copyright
+         ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- 7a. Identitas -->
+                <div class="footer-brand">
+                    <p class="footer-name">Raka Muhammad Rayhan</p>
+                    <p class="footer-tag">Eksplorasi Jenis Gitar. Tiga gitar, tiga karakter suara.</p>
+                </div>
+                <!-- 7b. Kolom navigasi -->
+                <div class="footer-col">
+                    <p class="footer-head">Jelajahi</p>
+                    <a href="#beranda">Beranda</a>
+                    <a href="#akustik" data-slide="0">Gitar akustik</a>
+                    <a href="#listrik" data-slide="1">Gitar listrik</a>
+                    <a href="#bass" data-slide="2">Gitar bass</a>
+                </div>
+                <!-- 7c. Kolom sumber referensi -->
+                <div class="footer-col">
+                    <p class="footer-head">Sumber referensi</p>
+                    <a href="https://theguitarmarketplace.com/the-history-of-the-acoustic-guitar/" target="_blank" rel="noopener">Sejarah gitar akustik</a>
+                    <a href="https://superlive.id/supermusic/artikel/news/gitar-listrik-sejarah-komponen-dan-kegunaannya" target="_blank" rel="noopener">Gitar listrik: sejarah dan komponen</a>
+                    <a href="https://www.superprof.co.id/blog/asal-usul-gitar-bass/" target="_blank" rel="noopener">Asal usul gitar bass</a>
+                </div>
+            </div>
+            <!-- 7d. Baris copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Eksplorasi Gitar. Tugas Pemrograman Web 1.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         BAGIAN 8: TOMBOL MELAYANG (FAB "Tanya kami")
+         Muncul di kanan bawah, sembunyi saat form kontak terlihat.
+         ============================================================ -->
+    <a href="#kontak" class="fab" aria-label="Tanya kami">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.500h16v10.500H10l-4.5 3.500V16H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span class="fab-bubble">Ada pertanyaan?</span>
+    </a>
+
+</body>
+</html>
